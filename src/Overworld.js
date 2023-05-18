@@ -2,7 +2,7 @@ class Overworld extends Phaser.Scene {
     constructor() {
         super({ key: 'overworldScene' })
 
-        this.VEL = 100
+        this.VEL = 200
     }
 
     preload() {
@@ -31,7 +31,7 @@ class Overworld extends Phaser.Scene {
         this.slime = this.physics.add.sprite(32, 32, 'slime', 0)
         this.anims.create({
             key: 'jiggle',
-            frameRate: 8,
+            frameRate: 24,
             repeat: -1,
             frames: this.anims.generateFrameNumbers('slime', {
                 start: 0,
@@ -71,5 +71,6 @@ class Overworld extends Phaser.Scene {
         }
         this.direction.normalize()
         this.slime.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y)
+        this.slime.tint = Math.random() * 0xFFFFFF
     }
 }
